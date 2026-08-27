@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Landing de campaña — Selene Palmero
 
-## Getting Started
+Landing page para **Selene Palmero**, candidata independiente a la Presidencia
+Municipal de Tehuantepec, Oaxaca.
 
-First, run the development server:
+> **Fase actual: propuesta / demo.** Todo el contenido es placeholder. Ver
+> [`SPEC-selene-palmero-landing.md`](./SPEC-selene-palmero-landing.md) para el
+> alcance y las decisiones cerradas, y [`ANALISIS.md`](./ANALISIS.md) para la
+> arquitectura base reutilizable.
+
+## Stack
+
+Next.js 16 (App Router, React Compiler) · React 19 · TypeScript · Tailwind CSS v4
+· lucide-react · Radix Dialog (menú móvil) · pnpm.
+
+## Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev      # http://localhost:3000
+pnpm build    # build de producción (Turbopack)
+pnpm lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Copia `.env.example` a `.env.local` y ajusta `NEXT_PUBLIC_SITE_URL`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estructura
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Carpeta | Qué contiene |
+|---|---|
+| `src/data/` | Contenido (placeholder). Editar aquí para cambiar textos, ejes, eventos, galería. Un CMS ligero lo reemplaza en la fase 2. |
+| `src/lib/` | `site.ts` (constantes, `whatsappUrl`), `navigation.ts`, `seo.ts`, `schema.ts`, `iconos.ts`, `fecha.ts`. |
+| `src/components/ui/` | Primitivos (Button, Card, Container, Section, SectionHeader). |
+| `src/components/common/` | Logo, Penacho (SVG), SocialLinks, SumateButton, tarjetas reutilizables. |
+| `src/components/navigation/` | Header, MobileMenu, MobileActionBar. |
+| `src/components/sections/` | Secciones de la landing. |
+| `src/components/layout/` | Footer, PageHero. |
 
-## Learn More
+## Pendiente antes de producción
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Contenido real (bio, historia, propuesta, galería con derechos, eventos).
+- Número de WhatsApp y URLs de redes reales (`src/data/contacto.ts`).
+- Logo aislado en SVG (hoy el wordmark se compone con tipografía).
+- Aviso legal, aviso de privacidad y pie de propaganda revisados por jurídico.
+- Decidir CMS, analítica y hosting.
